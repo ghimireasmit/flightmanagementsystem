@@ -37,16 +37,16 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'fms.urls'
 
 TEMPLATES = [
-    {
+     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "flightmandu/templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',  # Add this line
+                'django.contrib.auth.context_processors.auth',  # Add this line
+                'django.contrib.messages.context_processors.messages',  # Add this line
             ],
         },
     },
@@ -99,8 +99,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "flightmandu/static",
-                    
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),                  
 
 ]  # Adjust the path as needed
 
@@ -110,3 +110,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+APPEND_SLASH = False
