@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Signup - FlightMandu{% endblock %}
+{% block title %}Login - FlightMandu{% endblock %}
 
 {% block content %}
 <div class="container">
   <h1>Log In</h1>
-  <p>Don't have an account? <a href="{% url 'signup' %}" style="color: #d00000;">Sign Up</a></p>
+  <p>Don't have an account? <a href="{% url 'usersignup' %}" style="color: #d00000;">Sign Up</a></p>
   <form id="loginForm" action="" method="POST" onsubmit="return validateLogin()">
     {% csrf_token %}
     <input type="email" placeholder="Email" required class="full-width form-input">
@@ -73,11 +73,6 @@ function validatePassword() {
 
   if (!passwordRegex.test(password)) {
     alert('Password must be 8-13 characters long and include at least one number, one lowercase letter, and one uppercase letter.');
-    return false;
-  }
-
-  if (password !== confirmPassword) {
-    alert('Passwords do not match.');
     return false;
   }
 

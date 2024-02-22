@@ -5,9 +5,9 @@
 {% block content %}
 <div class="container">
   <h1>Create Your Account</h1>
-  <p>Already have an account? <a href="{% url 'signin' %}" style="color: #d00000;">Log In</a></p>
+  <p>Already have an account? <a href="{% url 'userlogin' %}" style="color: #d00000;">Log In</a></p>
   
-  <form action="{% url 'signup' %}" id="registrationForm" method="POST" onsubmit="return validatePassword()">
+  <form action="{% url 'usersignup' %}" id="registrationForm" method="POST" onsubmit="return validatePassword()">
     {% csrf_token %}
     <input type="text" id="userFname" name="userFname" placeholder="First Name" required class="full-width form-input">
     <input type="text" id="userLname" name="userLname" placeholder="Last Name" required class="full-width form-input">

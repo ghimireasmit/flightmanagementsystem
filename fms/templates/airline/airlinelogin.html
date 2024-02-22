@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Admin Log In</h1>
+  <h1>Airline Log In</h1>
   {% if error_message %}
   <p class="error-message">{{ error_message }}</p>
   {% endif %}
@@ -7,7 +7,7 @@
     {% csrf_token %}
     <input type="email" id="email" name="email" placeholder="Email" required class="full-width form-input">
     <input type="password" id="password" name="password" placeholder="Password" required class="full-width form-input">
-    <button type="submit" class="login-button">Admin Log In</button>
+    <button type="submit" class="login-button">Airline Log In</button>
   </form>
 </div>
 
