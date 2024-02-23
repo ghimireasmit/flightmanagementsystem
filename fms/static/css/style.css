@@ -72,61 +72,54 @@ section .title::after{
     bottom: -8px;
     left: 50%;
     font-size: 20px;
-    color: crimson;
+    color: #d00000;
     padding: 0 5px;
     background: #fff;
     transform: translateX(-50%);
 }
 
-/* navbar styling */
-.navbar{
+.navbar {
     position: fixed;
     width: 100%;
-    z-index: 999;
-    padding: 30px 0;
-    background: crimson;
+    padding: 20px 0; /* Adjusted padding */
+    background: #d00000; /* Add background color */
     font-family: 'Ubuntu', sans-serif;
-    transition: all 0.3s ease;
+    z-index: 999; /* Ensure navbar appears above other elements */
 }
-.navbar.sticky{
-    padding: 15px 0;
-    background: crimson;
-}
-.navbar .max-width{
+
+.navbar .max-width {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.navbar .logo a{
+
+.navbar .logo a {
     color: #fff;
-    font-size: 35px;
+    font-size: 24px; /* Adjusted font size */
     font-weight: 600;
 }
-.navbar .logo a span{
-    color: crimson;
+
+.navbar .logo a span {
+    color: #d00000;
     transition: all 0.3s ease;
 }
-.navbar.sticky .logo a span{
-    color: #fff;
-}
-.navbar .menu li{
+
+.navbar .menu li {
     list-style: none;
     display: inline-block;
 }
-.navbar .menu li a{
+
+.navbar .menu li a {
     display: block;
-    color: #fff;
-    font-size: 18px;
+    font-size: 15px; /* Adjusted font size */
     font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
+    margin-left: 12px; /* Adjusted margin */
 }
-.navbar .menu li a:hover{
-    color: #611414;
+
+.navbar .menu li a:hover {
+    color: black;
 }
-.navbar.sticky .menu li a:hover{
-    color: #fff;
-}
+
 
 /* menu btn styling */
 .menu-btn{
@@ -135,17 +128,27 @@ section .title::after{
     cursor: pointer;
     display: none;
 }
+
+.menu-btn-login{
+    color: #d00000;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+    background-color: white; /* Example background color */
+    padding: 6px 15px; /* Adjust padding as needed */
+    border-radius: 6px; /* Adjust border-radius as needed */
+}
+
 .scroll-up-btn{
     position: fixed;
     height: 45px;
     width: 42px;
-    background: crimson;
+    background: #d00000;
     right: 30px;
     bottom: 10px;
     text-align: center;
     line-height: 45px;
     color: #fff;
-    z-index: 9999;
     font-size: 30px;
     border-radius: 6px;
     border-bottom-width: 2px;
@@ -195,19 +198,19 @@ section .title::after{
     margin: 5px 0;
 }
 .home .home-content .text-3 span{
-    color: crimson;
+    color: #d00000;
     font-weight: 500;
 }
 .home .home-content a{
     display: inline-block;
-    background: crimson;
+    background: #d00000;
     color: #fff;
     font-size: 25px;
     padding: 12px 36px;
     margin-top: 20px;
     font-weight: 400;
     border-radius: 6px;
-    border: 2px solid crimson;
+    border: 2px solid #d00000;
     transition: all 0.3s ease;
 }
 .home .home-content a:hover{
@@ -237,21 +240,21 @@ section .title::after{
     margin-bottom: 10px;
 }
 .about .about-content .right .text span{
-    color: crimson;
+    color: #d00000;
 }
 .about .about-content .right p{
     text-align: justify;
 }
 .about .about-content .right a{
     display: inline-block;
-    background: crimson;
+    background: #d00000;
     color: #fff;
     font-size: 20px;
     font-weight: 500;
     padding: 10px 30px;
     margin-top: 20px;
     border-radius: 6px;
-    border: 2px solid crimson;
+    border: 2px solid #d00000;
     transition: all 0.3s ease;
 }
 .about .about-content .right a:hover{
@@ -271,7 +274,7 @@ section .title::after{
 .services .title::after,
 .teams .title::after{
     background: #111;
-    content: "what i provide";
+    content: "what we offer";
 }
 .services .serv-content .card{
     width: calc(33% - 20px);
@@ -293,7 +296,7 @@ section .title::after{
 }
 .services .serv-content .card i{
     font-size: 50px;
-    color: crimson;
+    color: #d00000;
     transition: color 0.3s ease;
 }
 .services .serv-content .card:hover i{
@@ -305,90 +308,6 @@ section .title::after{
     margin: 10px 0 7px 0;
 }
 
-
-
-/* bookings section styling */
-
-.bookings .title::after{
-    content: "Book your flight";
-}
-
-.bookings .bookings-content .column{
-    width: calc(50% - 30px);
-}
-
-.bookings .bookings-content .left .text{
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-.bookings .bookings-content .left p{
-    text-align: justify;
-}
-.bookings .bookings-content .left a{
-    display: inline-block;
-    background: crimson;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 16px;
-    margin-top: 20px;
-    border-radius: 6px;
-    border: 2px solid crimson;
-    transition: all 0.3s ease;
-}
-.bookings .bookings-content .left a:hover{
-    color: #611414;
-    background: none;
-}
-.bookings .bookings-content .right .bars{
-    margin-bottom: 15px;
-}
-.bookings .bookings-content .right .info{
-    display: flex;
-    margin-bottom: 5px;
-    align-items: center;
-    justify-content: space-between;
-}
-.bookings .bookings-content .right span{
-    font-weight: 500;
-    font-size: 18px;
-}
-.bookings .bookings-content .right .line{
-    height: 5px;
-    width: 100%;
-    background: lightgrey;
-    position: relative;
-}
-.bookings .bookings-content .right .line::before{
-    content: "";
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: crimson;
-}
-.bookings-content .right .html::before{
-    width: 70%;
-}
-.bookings-content .right .css::before{
-    width: 50%;
-}
-.bookings-content .right .js::before{
-    width: 70%;
-}
-.bookings-content .right .php::before{
-    width: 50%;
-}
-.bookings-content .right .mysql::before{
-    width: 70%;
-}
-.bookings-content .right .java::before{
-    width: 50%;
-}
-.bookings-content .right .python::before{
-    width: 70%;
-}
 
 /* contact section styling */
 .contact .title::after{
@@ -418,7 +337,7 @@ section .title::after{
 }
 .contact .contact-content .row i{
     font-size: 25px;
-    color: crimson;
+    color: #d00000;
 }
 .contact .contact-content .info .head{
     font-weight: 500;
@@ -477,8 +396,8 @@ section .title::after{
   border-radius: 6px;
   cursor: pointer;
   flex-wrap: nowrap;
-  background: crimson;
-  border: 2px solid crimson;
+  background: #d00000;
+  border: 2px solid #d00000;
   transition: all 0.3s ease;
 }
 .right form .button-area button:hover{
@@ -486,19 +405,6 @@ section .title::after{
   background: none;
 }
 
-.contact .valentine {
-    display: flex;
-    flex-direction: column; /* Display flex items in a column */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    margin: 10px; /* Adjust as needed */    
-    font-size: 50px;
-    font-weight: 600;
-}
-
-.contact .valentine .blink-text {
-    padding-top: 10px; /* Add padding to the top of the blinking text */
-}
 
 /* footer section styling */
 footer{
@@ -508,7 +414,7 @@ footer{
     text-align: center;
 }
 footer span a{
-    color: crimson;
+    color: #d00000;
     text-decoration: none;
 }
 footer span a:hover{
@@ -516,6 +422,189 @@ footer span a:hover{
 }
 
 
+
+
+.sectionbook {
+	position: relative;
+	height: 100vh;
+}
+
+.sectionbook .sectionbook-center {
+	position: absolute;
+	top: 55%;
+	left: 0;
+	right: 0;
+	-webkit-transform: translateY(-30%);
+	transform: translateY(-50%);
+}
+
+#booking {
+	font-family: 'PT Sans', sans-serif;
+    background-image: url("../images/background.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.booking-form {
+	background: rgba(0, 0, 0, 0.7);
+	padding: 40px;
+	border-radius: 6px;
+}
+
+.booking-form .form-group {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.booking-form .form-control {
+	background-color: #fff;
+	height: 50px;
+	color: #191a1e;
+	border: none;
+	font-size: 16px;
+	font-weight: 400;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 8px;
+	padding: 0px 25px;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.booking-form .form-control::placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.booking-form input[type="date"].form-control:invalid {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.booking-form select.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.booking-form select.form-control+.select-arrow {
+	position: absolute;
+	right: 10px;
+	bottom: 6px;
+	width: 32px;
+	line-height: 32px;
+	height: 32px;
+	text-align: center;
+	pointer-events: none;
+	color: rgba(0, 0, 0, 0.3);
+	font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+	content: '\279C';
+	display: block;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.booking-form .form-label {
+	display: block;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 24px;
+	height: 24px;
+	font-size: 12px;
+	color: #fff;
+}
+
+.booking-form .form-checkbox input {
+	position: absolute !important;
+	margin-left: -9999px !important;
+	visibility: hidden !important;
+}
+
+.booking-form .form-checkbox label {
+	position: relative;
+	padding-top: 4px;
+	padding-left: 30px;
+	font-weight: 400;
+	color: #fff;
+}
+
+.booking-form .form-checkbox label+label {
+	margin-left: 15px;
+}
+
+.booking-form .form-checkbox input+span {
+	position: absolute;
+	left: 2px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 50%;
+}
+
+.booking-form .form-checkbox input+span:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0px;
+	height: 0px;
+	border-radius: 8%;
+	background-color: #d00000;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.booking-form .form-checkbox input:not(:checked)+span:after {
+	opacity: 0;
+}
+
+.booking-form .form-checkbox input:checked+span:after {
+	opacity: 1;
+	width: 10px;
+	height: 10px;
+}
+
+.booking-form .form-btn {
+	margin-top: 27px;
+}
+
+.booking-form .submit-btn {
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    flex-wrap: nowrap;
+    background: #d00000;
+    border: 2px solid #d00000;
+    transition: all 0.3s ease;
+    margin-top: 10px; /* Add margin to move the button down */
+    text-transform: uppercase; /* Apply text transform */
+  }
+  
+  .booking-form .submit-btn:hover,
+  .booking-form .submit-btn:focus {
+    opacity: 0.9;
+    color: #d00000;
+    background: none;
+  }
   
 /* responsive media query start */
 @media (max-width: 1104px) {
@@ -533,7 +622,6 @@ footer span a:hover{
 @media (max-width: 947px){
     .menu-btn{
         display: block;
-        z-index: 999;
     }
     .menu-btn i.active:before{
         content: "\f00d";

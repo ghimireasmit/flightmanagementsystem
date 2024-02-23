@@ -25,10 +25,10 @@
         <div class="max-width">
             <div class="logo"><a href="{% url 'home' %}">FlightMandu</a></div>
             <ul class="menu">
+                <li><a href="{% url 'flightbooking' %}" class="menu-btn">Flight Booking</a></li>
                 <li><a href="#services" class="menu-btn">Services</a></li>
-                <li><a href="#bookings" class="menu-btn">Booking</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
-                <li><a href="{% url 'userlogin' %}" class="menu-btn">Login/Signup</a></li>
+                <li><a href="{% url 'userlogin' %}" class="menu-btn-login">Login/Signup</a></li>
             </ul>
         </div>
     </nav>
@@ -73,11 +73,14 @@
             <h2 class="title">Services We Provide</h2>
             <div class="serv-content">
                 <div class="card">
-                    <div class="box">
-                        <i class="fas fa-plane"></i>
-                        <div class="text">Flight Booking</div>
-                    </div>
+                    <a href="{% url 'flightbooking' %}">
+                        <div class="box" href="{% url 'flightbooking' %}">
+                            <i class="fas fa-plane"></i>
+                            <div class="text" style="color: white;">Flight Booking</div>
+                        </div>
+                    </a>
                 </div>
+            
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-hotel"></i>
@@ -92,13 +95,6 @@
                 </div>
                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Bookings section start -->
-    <section class="bookings" id="bookings">
-        <div class="max-width">
-            <h2 class="title">Bookings</h2>
         </div>
     </section>
 
@@ -136,26 +132,27 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message Us</div>
-                    <form action="#">
+                    <form action="{% url 'contactus' %}" method="post"> <!-- Updated form action -->
+                        {% csrf_token %}
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" name="name" placeholder="Name" required> <!-- Added name attribute -->
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" name="email" placeholder="Email" required> <!-- Added name attribute -->
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" name="subject" placeholder="Subject" required> <!-- Added name attribute -->
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea name="message" cols="30" rows="10" placeholder="Message.." required></textarea> <!-- Added name attribute -->
                         </div>
                         <div class="button-area">
                             <button type="submit">Send message</button>
                         </div>
                     </form>
-                </div>
+                </div>                
             </div>
         </div>
     </section>

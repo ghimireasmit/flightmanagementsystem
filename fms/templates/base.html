@@ -25,13 +25,20 @@
         <div class="max-width">
             <div class="logo"><a href="{% url 'home' %}">FlightMandu</a></div>
             <ul class="menu">
-                <li><a href="{% url 'userlogin' %}" class="menu-btn">Login/Signup</a></li>
+                {% if user.is_authenticated %}
+                    <!-- If the user is authenticated, display the welcome message and logout button -->
+                    <li>
+                        <a href="#" class="menu-btn"><i class="fas fa-user"></i> Welcome {{ user.first_name }}</a>
+                    </li>
+                    <li><a href="{% url 'userlogout' %}" class="menu-btn-login">Logout</a></li>
+                {% else %}
+                    <!-- If the user is not authenticated, display the login/signup button -->
+                    <li><a href="{% url 'userlogin' %}" class="menu-btn-login">Login/Signup</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
-    <footer>
-        <span>Created By <a href="https://linkedin.com/in/asmitghimire" target="_blank" rel="noopener noreferrer">Asmit Ghimire</a> | <span class="far fa-copyright"></span> 2024 All rights reserved.</span>
-    </footer>
+
     <!-- Content specific to each page will go here -->
     <div class="content">
         {% block content %}
