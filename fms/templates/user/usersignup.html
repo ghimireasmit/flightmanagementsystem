@@ -1,3 +1,5 @@
+<!-- signup.html -->
+
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Signup - FlightMandu{% endblock %}
@@ -17,17 +19,21 @@
     <h1>Create Your Account</h1>
     <p>Already have an account? <a href="{% url 'userlogin' %}" class="signup-button">Log In</a></p>
     
-    <form id="registrationForm" method="POST" onsubmit="return validateForm()">
+    <form id="registrationForm" method="POST" action="">
       {% csrf_token %}
       <input type="text" id="userFname" name="userFname" placeholder="First Name" required class="full-width form-input">
       <input type="text" id="userLname" name="userLname" placeholder="Last Name" required class="full-width form-input">
       <input type="date" id="userDob" name="userDob" placeholder="Date of birth" required class="full-width form-input">
-      <input type="email" id="userEmail" name="userEmail" placeholder="Email" required class="full-width form-input" oninput="checkEmailAvailability(this.value)">
-      <p class="error-message" id="emailError"></p> <!-- Placeholder for email error message -->
-      <input type="tel" id="userPhone" name="userPhone" placeholder="Phone" required class="full-width form-input" oninput="checkPhoneAvailability(this.value)">
-      <p class="error-message" id="phoneError"></p> <!-- Placeholder for phone error message -->
+      <input type="email" id="userEmail" name="userEmail" placeholder="Email" required class="full-width form-input">
+      <input type="tel" id="userPhone" name="userPhone" placeholder="Phone" required class="full-width form-input">
       <input type="password" id="userPassword" name="userPassword" placeholder="Password" required class="full-width form-input">
       <input type="password" id="userCpassword" name="userCpassword" placeholder="Confirm Password" required class="full-width form-input">
+      {% if form.errors.userEmail %}
+        <p class="error-message">{{ form.errors.userEmail }}</p>
+      {% endif %}
+      {% if form.errors.userPhone %}
+        <p class="error-message">{{ form.errors.userPhone }}</p>
+      {% endif %}
       <button type="submit" class="login-button">Create Account</button>
     </form>
   </div>

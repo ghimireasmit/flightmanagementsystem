@@ -16,5 +16,4 @@ class UserSignupForm(forms.Form):
 
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Passwords do not match")
-        
         return cleaned_data

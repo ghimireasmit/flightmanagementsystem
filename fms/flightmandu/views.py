@@ -1,9 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.http import JsonResponse
 from .forms import UserSignupForm
-from .models import User, ContactMessage
+from .models import User
 from django.contrib import messages
 
 
@@ -11,41 +9,37 @@ def usersignup(request):
     if request.method == 'POST':
         form = UserSignupForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['userEmail']
-            first_name = form.cleaned_data['userFname']
-            last_name = form.cleaned_data['userLname']
-            date_of_birth = form.cleaned_data['userDob']
-            phone = form.cleaned_data['userPhone']
-            password = form.cleaned_data['userPassword']
+            # Extract cleaned data from the form
+            user_email = form.cleaned_data['userEmail']
+            user_password = form.cleaned_data['userPassword']
+            user_first_name = form.cleaned_data['userFname']
+            user_last_name = form.cleaned_data['userLname']
+            user_dob = form.cleaned_data['userDob']
+            user_phone = form.cleaned_data['userPhone']
             
-            if User.objects.filter(email=email).exists():
-                form.add_error('userEmail', 'Email is already in use.')
-                return render(request, 'user/usersignup.html', {'form': form})
-            
-            if User.objects.filter(phone=phone).exists():
-                form.add_error('userPhone', 'Phone number is already in use.')
-                return render(request, 'user/usersignup.html', {'form': form})
-
-            new_user = User(email=email, first_name=first_name, last_name=last_name, date_of_birth=date_of_birth, phone=phone)
-            new_user.set_password(password)
-            new_user.save()
-            
-            return redirect('success_page')
+            # Create a new user instance
+            user = User.objects.create_user(
+                email=user_email,
+                password=user_password,
+                first_name=user_first_name,
+                last_name=user_last_name,
+                date_of_birth=user_dob,
+                phone=user_phone
+            )
+            # Authenticate the user
+            user = authenticate(request, email=user_email, password=user_password)
+            if user is not None:
+                # Log the user in after signup
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                # Redirect to user's homepage
+                return redirect('userhomepage')
+            else:
+                # Handle authentication failure
+                messages.error(request, 'Failed to authenticate user after signup.')
     else:
         form = UserSignupForm()
+    
     return render(request, 'user/usersignup.html', {'form': form})
-
-def check_email_availability(request):
-    email = request.POST.get('email')
-    if User.objects.filter(email=email).exists():
-        return JsonResponse({'available': False})
-    return JsonResponse({'available': True})
-
-def check_phone_availability(request):
-    phone = request.POST.get('phone')
-    if User.objects.filter(phone=phone).exists():
-        return JsonResponse({'available': False})
-    return JsonResponse({'available': True})
 
 
 def userlogin(request):
@@ -57,48 +51,63 @@ def userlogin(request):
         
         if user is not None:
             login(request, user)
-            # Redirect to a success page or any other page you want
+            # Redirect to user's homepage
             return redirect('userhomepage')
         else:
             # If authentication fails, display an error message
             messages.error(request, 'Invalid email or password. Please try again.')
-            return redirect('userlogin')  # Adjust this to your login page URL
-    else:
-        return render(request, 'user/userlogin.html')  # Adjust this to your login page template path
-
+    return render(request, 'user/userlogin.html')
 
 
 def userhomepage(request):
-    return render(request, 'user/userhomepage.html')
+    if request.user.is_authenticated:
+        return render(request, 'user/userhomepage.html')
+    else:
+        return redirect('userlogin')
 
 
 def index(request):
     return render(request, "index.html")
 
+
 def flightbooking(request):
     return render(request, "flightbooking.html")
+
 
 def userlogout(request):
     if request.user.is_authenticated:
         logout(request)
-    return redirect(index)
+    return redirect('index')
 
-
-
-def contactus(request):
+def airlinelogin(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        password = request.POST.get('password')
         
-        # Create and save the ContactMessage object
-        contact_message = ContactMessage.objects.create(
-            name=name,
-            email=email,
-            subject=subject,
-            message=message
-        )
-        return render(request, 'index.html')
+        user = authenticate(request, email=email, password=password)
+        
+        if user is not None:
+            login(request, user)
+            # Redirect to user's homepage
+            return redirect('flightbooking.html')
+        else:
+            # If authentication fails, display an error message
+            messages.error(request, 'Invalid email or password. Please try again.')
+    return render(request, 'airline/airlinelogin.html')
 
-    return render(request, 'index.html')
+
+def adminlogin(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, email=email, password=password)
+        
+        if user is not None:
+            login(request, user)
+            # Redirect to user's homepage
+            return redirect('adminhomepage.html')
+        else:
+            # If authentication fails, display an error message
+            messages.error(request, 'Invalid email or password. Please try again.')
+    return render(request, 'admin/adminlogin.html')

@@ -23,7 +23,7 @@
     </div>
     <nav class="navbar">
         <div class="max-width">
-            <div class="logo"><a href="{% url 'home' %}">FlightMandu</a></div>
+            <div class="logo"><a href="{% url 'index' %}">FlightMandu</a></div>
             <ul class="menu">
                 <li><a href="{% url 'flightbooking' %}" class="menu-btn">Flight Booking</a></li>
                 <li><a href="#services" class="menu-btn">Services</a></li>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message Us</div>
-                    <form action="{% url 'contactus' %}" method="post"> <!-- Updated form action -->
+                    <form action="#" method="post"> <!-- Updated form action -->
                         {% csrf_token %}
                         <div class="fields">
                             <div class="field name">
