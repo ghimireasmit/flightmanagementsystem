@@ -1,2 +1,2 @@
 # flightmanagementsystem
-A college FYP Project
+A fully functional Flight Management System Application using Django
